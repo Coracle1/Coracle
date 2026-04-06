@@ -29,40 +29,42 @@
             font-family: 'Orbitron', sans-serif;
             background: var(--navy-deep);
             color: var(--text-light);
-            display: flex;
             height: 100vh;
+            display: flex;
             overflow: hidden;
         }
 
         /* ------------------------------------
-           SIDEBAR
+           LEFT SIDEBAR (LIKE SCREENSHOT)
         ------------------------------------ */
         .sidebar {
-            width: 220px;
+            width: 240px;
             background: rgba(0, 0, 0, 0.35);
-            backdrop-filter: blur(14px);
-            -webkit-backdrop-filter: blur(14px);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
             border-right: 1px solid rgba(255,255,255,0.08);
-            padding: 2rem 1rem;
+            padding: 2rem 1.5rem;
             display: flex;
             flex-direction: column;
             gap: 2rem;
+            z-index: 10;
         }
 
         .sidebar h1 {
-            font-size: 1.4rem;
+            font-size: 1.5rem;
             font-weight: 700;
-            text-align: center;
             color: var(--blue-aqua);
+            text-align: center;
             margin-bottom: 1rem;
         }
 
         .nav-item {
-            font-size: 1rem;
-            font-weight: 400;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            padding: 0.8rem 1rem;
+            border-radius: 10px;
             color: var(--text-mid);
-            padding: 0.7rem 1rem;
-            border-radius: 8px;
             cursor: pointer;
             transition: 0.25s ease;
         }
@@ -72,13 +74,21 @@
             color: var(--text-light);
         }
 
+        .nav-icon {
+            width: 20px;
+            height: 20px;
+            background: var(--blue-aqua);
+            border-radius: 4px;
+            opacity: 0.8;
+        }
+
         /* ------------------------------------
-           BACKGROUND GLOW + WAVES
+           BACKGROUND GLOW + WAVES (SCREENSHOT)
         ------------------------------------ */
         .background {
             position: absolute;
             inset: 0;
-            z-index: -2;
+            z-index: -3;
             background:
                 radial-gradient(circle at 50% 40%, var(--blue-core) 0%, transparent 55%),
                 radial-gradient(circle at 50% 40%, var(--blue-glow) 0%, transparent 70%),
@@ -87,41 +97,73 @@
             filter: blur(40px);
         }
 
+        /* flowing wave lines */
         .waves {
             position: absolute;
             inset: 0;
-            z-index: -1;
+            z-index: -2;
             background:
                 radial-gradient(ellipse at 50% 120%, rgba(0,110,190,0.25), transparent 70%),
-                radial-gradient(ellipse at 50% -20%, rgba(0,162,255,0.18), transparent 70%);
+                radial-gradient(ellipse at 50% -20%, rgba(0,162,255,0.18), transparent 70%),
+                radial-gradient(ellipse at 20% 50%, rgba(0,180,255,0.15), transparent 70%),
+                radial-gradient(ellipse at 80% 50%, rgba(0,110,190,0.15), transparent 70%);
             filter: blur(60px);
-            opacity: 0.7;
+            opacity: 0.75;
         }
 
         /* ------------------------------------
-           MAIN CONTENT AREA
+           CENTRAL LOGO + ENERGY RING
         ------------------------------------ */
-        .main {
+        .center-ring {
+            position: absolute;
+            top: 50%;
+            left: calc(240px + 50%);
+            transform: translate(-50%, -50%);
+            width: 600px;
+            height: 600px;
+            border-radius: 50%;
+            background:
+                radial-gradient(circle, rgba(0,162,255,0.35), transparent 70%),
+                radial-gradient(circle, rgba(0,110,190,0.25), transparent 80%);
+            filter: blur(40px);
+            z-index: -1;
+        }
+
+        .logo {
+            position: absolute;
+            top: 50%;
+            left: calc(240px + 50%);
+            transform: translate(-50%, -50%);
+            width: 340px;
+            filter:
+                drop-shadow(0 0 25px rgba(0,162,255,0.45))
+                drop-shadow(0 0 35px rgba(0,110,190,0.35));
+        }
+
+        /* ------------------------------------
+           RIGHT GLASS PANEL (SCREENSHOT)
+        ------------------------------------ */
+        .panel-container {
             flex: 1;
-            padding: 4rem;
             display: flex;
-            justify-content: center;
+            justify-content: flex-end;
             align-items: center;
+            padding-right: 4rem;
         }
 
         .glass-panel {
-            width: 480px;
+            width: 420px;
             padding: 2rem;
             background: var(--glass-bg);
             border: 1px solid var(--glass-border);
             border-radius: 18px;
             backdrop-filter: blur(14px);
             -webkit-backdrop-filter: blur(14px);
-            text-align: center;
+            text-align: left;
         }
 
         .glass-panel h2 {
-            font-size: 1.8rem;
+            font-size: 1.6rem;
             font-weight: 700;
             color: var(--blue-aqua);
             margin-bottom: 1rem;
@@ -129,26 +171,8 @@
 
         .glass-panel p {
             font-size: 1rem;
-            font-weight: 400;
             color: var(--text-mid);
-        }
-
-        /* ------------------------------------
-           LOGO AREA (CENTER GLOW)
-        ------------------------------------ */
-        .logo-container {
-            position: absolute;
-            top: 50%;
-            left: calc(220px + 50%);
-            transform: translate(-50%, -50%);
-            z-index: -1;
-        }
-
-        .logo-container img {
-            width: 360px;
-            filter:
-                drop-shadow(0 0 25px rgba(0,162,255,0.45))
-                drop-shadow(0 0 35px rgba(0,110,190,0.35));
+            line-height: 1.6;
         }
     </style>
 </head>
@@ -160,16 +184,24 @@
 
     <div class="sidebar">
         <h1>Coracle</h1>
-        <div class="nav-item">Home</div>
-        <div class="nav-item">About</div>
-        <div class="nav-item">Contact</div>
+
+        <div class="nav-item">
+            <div class="nav-icon"></div> Home
+        </div>
+
+        <div class="nav-item">
+            <div class="nav-icon"></div> About
+        </div>
+
+        <div class="nav-item">
+            <div class="nav-icon"></div> Contact
+        </div>
     </div>
 
-    <div class="logo-container">
-        <img src="Businesslogo.png" alt="Coracle logo">
-    </div>
+    <div class="center-ring"></div>
+    <img src="Businesslogo.png" class="logo" alt="Coracle logo">
 
-    <div class="main">
+    <div class="panel-container">
         <div class="glass-panel">
             <h2>A new app is coming soon</h2>
             <p>
