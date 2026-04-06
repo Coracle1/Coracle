@@ -172,5 +172,57 @@
                     rgba(255,180,70,0.25),
                     transparent 80%
                 ),
-                linear-gradient(180deg
+                linear-gradient(180deg, rgba(0,0,0,0.25), rgba(0,0,0,0.55));
+
+            border-top: 1px solid var(--glass-border);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+
+            box-shadow:
+                0 -10px 40px rgba(0, 0, 0, 0.45),
+                0 -10px 60px rgba(0,162,255,0.15),
+                0 -10px 60px rgba(255,180,70,0.15);
+        }
+
+        footer a {
+            color: var(--highlight-blue);
+            text-decoration: none;
+            margin: 0 1rem;
+            font-size: 1rem;
+            transition: 0.25s ease;
+            font-weight: 700;
+        }
+
+        footer a:hover {
+            color: var(--bright-orange);
+            text-shadow: 0 0 12px rgba(255,180,70,0.55);
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <img src="Businesslogo.png" alt="Coracle logo" class="logo">
+    </section>
+
+    <!-- GLASS CARD -->
+    <div class="glass-card">
+        <h2>A new app is coming soon</h2>
+        <p>
+            We’re building something designed to make travel simpler, clearer, and more connected.
+            Stay tuned — Coracle’s new app is on the horizon.
+        </p>
+    </div>
+
+    <!-- PREMIUM FOOTER -->
+    <footer>
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="terms.html">Terms of Use</a>
+        <a href="contact.html">Contact</a>
+    </footer>
+
+</body>
 </html>
+
