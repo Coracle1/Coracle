@@ -10,85 +10,146 @@
     <link rel="icon" type="image/png" href="favicon.png" sizes="96x96">
 
     <style>
+        /* ------------------------------
+           CORACLE THEME COLOURS
+        ------------------------------ */
+        :root {
+            --coracle-blue-dark: #07142d;
+            --coracle-blue-mid: #0f2d57;
+            --coracle-blue-light: #4da3ff;
+            --coracle-glow: rgba(77, 163, 255, 0.55);
+            --glass-bg: rgba(255, 255, 255, 0.08);
+            --glass-border: rgba(255, 255, 255, 0.18);
+            --text-light: #e8f1ff;
+            --text-mid: #b8c7e0;
+        }
+
+        /* ------------------------------
+           GLOBAL
+        ------------------------------ */
         body {
             margin: 0;
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            background: #ffffff;
-            color: #111;
+            background: radial-gradient(circle at 50% 20%, var(--coracle-blue-mid), var(--coracle-blue-dark) 70%);
+            color: var(--text-light);
             line-height: 1.6;
+            min-height: 100vh;
         }
 
-        header {
-            padding: 2rem;
+        /* Animated glow pulse behind hero */
+        .hero::before {
+            content: "";
+            position: absolute;
+            top: -200px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 900px;
+            height: 900px;
+            background: radial-gradient(circle, var(--coracle-glow), transparent 70%);
+            filter: blur(80px);
+            opacity: 0.45;
+            animation: pulse 6s ease-in-out infinite;
+            z-index: -1;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 0.35; transform: translateX(-50%) scale(1); }
+            50% { opacity: 0.55; transform: translateX(-50%) scale(1.15); }
+            100% { opacity: 0.35; transform: translateX(-50%) scale(1); }
+        }
+
+        /* ------------------------------
+           HERO SECTION
+        ------------------------------ */
+        .hero {
+            position: relative;
+            padding: 4rem 1rem 3rem;
             text-align: center;
-            border-bottom: 1px solid #eee;
         }
 
-        /* Main Coracle logo */
         .logo {
             max-width: 260px;
             height: auto;
             display: block;
-            margin: 0 auto 1rem auto;
+            margin: 0 auto;
+            filter: drop-shadow(0 0 14px var(--coracle-glow));
         }
 
-        header h1 {
-            margin: 0;
-            font-size: 2rem;
-            letter-spacing: 0.5px;
-        }
-
-        main {
+        /* ------------------------------
+           GLASS CARD
+        ------------------------------ */
+        .glass-card {
             max-width: 700px;
-            margin: 4rem auto;
-            padding: 0 1.5rem;
+            margin: 3rem auto;
+            padding: 2rem 2.5rem;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 18px;
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
             text-align: center;
+            box-shadow: 0 0 25px rgba(0, 0, 0, 0.25);
         }
 
-        .coming-soon {
-            font-size: 1.4rem;
-            margin-top: 1rem;
-            color: #444;
+        .glass-card h2 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            text-shadow: 0 0 10px var(--coracle-glow);
         }
 
+        .glass-card p {
+            font-size: 1.2rem;
+            color: var(--text-mid);
+        }
+
+        /* ------------------------------
+           FOOTER BAR
+        ------------------------------ */
         footer {
             margin-top: 4rem;
-            padding: 2rem;
+            padding: 1.5rem;
             text-align: center;
             font-size: 0.9rem;
-            border-top: 1px solid #eee;
+            background: rgba(0, 0, 0, 0.25);
+            border-top: 1px solid var(--glass-border);
+            backdrop-filter: blur(10px);
         }
 
         footer a {
-            color: #333;
+            color: var(--coracle-blue-light);
             text-decoration: none;
             margin: 0 0.75rem;
+            transition: 0.2s ease;
         }
 
         footer a:hover {
-            text-decoration: underline;
+            text-shadow: 0 0 8px var(--coracle-blue-light);
         }
     </style>
 </head>
 
 <body>
-    <header>
-        <img src="Businesslogo.png" alt="Coracle logo" class="logo">
-        <h1>Coracle</h1>
-    </header>
 
-    <main>
+    <!-- HERO SECTION (no headline) -->
+    <section class="hero">
+        <img src="Businesslogo.png" alt="Coracle logo" class="logo">
+    </section>
+
+    <!-- GLASS CARD CONTENT -->
+    <div class="glass-card">
         <h2>A new app is coming soon</h2>
-        <p class="coming-soon">
+        <p>
             We’re building something designed to make travel simpler, clearer, and more connected.
             Stay tuned — Coracle’s new app is on the horizon.
         </p>
-    </main>
+    </div>
 
+    <!-- FOOTER BAR -->
     <footer>
         <a href="privacy.html">Privacy Policy</a>
         <a href="terms.html">Terms of Use</a>
         <a href="contact.html">Contact</a>
     </footer>
+
 </body>
 </html>
