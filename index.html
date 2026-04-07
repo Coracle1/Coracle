@@ -32,7 +32,7 @@
         body {
             margin: 0;
             font-family: 'Orbitron', sans-serif;
-            background: radial-gradient(circle at 50% 0%, #041020 0%, #020814 55%, #000000 100%);
+            background: var(--navy-deep);
             color: var(--text-light);
             height: 100vh;
             display: flex;
@@ -64,7 +64,7 @@
             opacity: 0.8;
         }
 
-        /* LAYOUT WRAPPER */
+        /* APP LAYOUT */
         .app-shell {
             display: flex;
             width: 100%;
@@ -91,14 +91,6 @@
             text-align: left;
         }
 
-        .sidebar-sub {
-            font-size: 0.75rem;
-            color: var(--text-mid);
-            letter-spacing: 0.12em;
-            text-transform: uppercase;
-            margin-top: 0.25rem;
-        }
-
         .nav-list {
             margin-top: 1.5rem;
             display: flex;
@@ -113,11 +105,6 @@
             border-radius: 10px;
             cursor: pointer;
             transition: 0.25s ease;
-        }
-
-        .nav-item.active {
-            background: linear-gradient(90deg, rgba(0,162,255,0.35), rgba(0,110,190,0.15));
-            color: var(--text-light);
         }
 
         .nav-item:hover {
@@ -142,7 +129,7 @@
             width: 100%;
         }
 
-        /* CENTRAL LOGO AREA (CIRCULAR GLOW) */
+        /* CENTRAL LOGO + RING */
         .logo-wrap {
             position: relative;
             flex: 0 0 360px;
@@ -186,7 +173,7 @@
                 drop-shadow(0 0 28px rgba(0,110,190,0.6));
         }
 
-        /* CHECKLIST CARD (RIGHT SIDE) */
+        /* RIGHT CARD (VERBATIM LAYOUT, NEUTRAL TEXT) */
         .card {
             flex: 1;
             background: var(--card-bg);
@@ -274,17 +261,12 @@
 
         <!-- LEFT SIDEBAR -->
         <aside class="sidebar">
-            <div>
-                <div class="sidebar-title">Coracle</div>
-                <div class="sidebar-sub">TRAVEL DASHBOARD</div>
-            </div>
+            <div class="sidebar-title">Coracle</div>
 
             <nav class="nav-list">
-                <div class="nav-item active">My List</div>
-                <div class="nav-item">Flights</div>
-                <div class="nav-item">Hotels</div>
-                <div class="nav-item">Transport</div>
-                <div class="nav-item">More</div>
+                <div class="nav-item">Home</div>
+                <div class="nav-item">Privacy Policy</div>
+                <div class="nav-item">Contact</div>
             </nav>
         </aside>
 
@@ -300,13 +282,51 @@
                     </div>
                 </div>
 
-                <!-- CHECKLIST CARD (VERBATIM LAYOUT, NO “TRAVEL CHECKNGO”) -->
+                <!-- RIGHT CARD (STRUCTURE LIKE SCREENSHOT, TEXT NEUTRAL) -->
                 <section class="card">
                     <div class="card-header">
                         <div>
-                            <div class="card-title">My Trip Preparation</div>
-                            <div class="card-subtitle">All tasks completed</div>
+                            <div class="card-title">Dashboard Overview</div>
+                            <div class="card-subtitle">All actions completed</div>
                         </div>
-                        <div class="progress-text">5 / 5 Tasks completed
+                        <div class="progress-text">5 / 5 tasks completed</div>
+                    </div>
+
+                    <div class="progress-bar">
+                        <div class="progress-fill"></div>
+                    </div>
+
+                    <div class="task-list">
+                        <div class="task-item">
+                            <div class="task-check">✓</div>
+                            <span>Review account details</span>
+                        </div>
+                        <div class="task-item">
+                            <div class="task-check">✓</div>
+                            <span>Confirm notification settings</span>
+                        </div>
+                        <div class="task-item">
+                            <div class="task-check">✓</div>
+                            <span>Update security preferences</span>
+                        </div>
+                        <div class="task-item">
+                            <div class="task-check">✓</div>
+                            <span>Check upcoming reminders</span>
+                        </div>
+                        <div class="task-item">
+                            <div class="task-check">✓</div>
+                            <span>Save backup information</span>
+                        </div>
+                    </div>
+                </section>
+
+            </div>
+        </main>
+
+    </div>
+
+</body>
+</html>
+
 
 
