@@ -8,6 +8,9 @@
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="favicon.png" />
 
+  <!-- Orbitron Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;600&display=swap" rel="stylesheet">
+
   <style>
     * {
       margin: 0;
@@ -22,21 +25,19 @@
 
     body {
       background: url("Newappweb.png") no-repeat center center fixed;
-      
-      /* FIXED BACKGROUND SCALING */
-      background-size: contain; /* shows full image instead of zooming */
-      background-color: black; /* fills empty space nicely */
-
+      background-size: contain;
+      background-color: black;
       color: white;
     }
 
-    /* Top navigation */
+    /* HEADER */
     header {
       width: 100%;
       padding: 20px 40px;
       display: flex;
       justify-content: flex-end;
       align-items: center;
+      position: relative;
     }
 
     nav ul {
@@ -45,21 +46,71 @@
       gap: 24px;
     }
 
-    nav a {
+    /* NAV BUTTONS (Orbitron) */
+    .nav-button {
+      font-family: "Orbitron", sans-serif;
       color: white;
-      text-decoration: none;
-      font-size: 16px;
+      background: transparent;
+      border: none;
+      font-size: 14px;
+      letter-spacing: 1px;
       font-weight: 600;
+      cursor: pointer;
       padding: 8px 12px;
       border-radius: 6px;
       transition: background 0.3s ease;
     }
 
-    nav a:hover {
+    .nav-button:hover {
       background: rgba(255, 255, 255, 0.2);
     }
 
-    /* Optional: make nav readable over image */
+    /* DROPDOWN */
+    .dropdown {
+      position: relative;
+    }
+
+    .panel {
+      position: absolute;
+      top: 40px;
+      right: 0;
+      background: rgba(20, 30, 40, 0.95);
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 10px;
+      padding: 14px;
+      width: 260px;
+      display: none;
+      backdrop-filter: blur(6px);
+    }
+
+    .panel.open {
+      display: block;
+    }
+
+    .panel h3 {
+      margin-bottom: 8px;
+      font-size: 14px;
+    }
+
+    .panel p {
+      font-size: 13px;
+      margin-bottom: 10px;
+      color: #ddd;
+    }
+
+    .panel a {
+      display: block;
+      color: #7fd1c8;
+      text-decoration: none;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    .panel a:hover {
+      text-decoration: underline;
+    }
+
+    /* HEADER OVERLAY */
     header::before {
       content: "";
       position: absolute;
@@ -81,23 +132,70 @@
         gap: 12px;
         flex-wrap: wrap;
       }
-
-      nav a {
-        font-size: 14px;
-      }
     }
   </style>
 </head>
 
 <body>
-  <header>
-    <nav>
-      <ul>
-        <li><a href="contact.html">Contact</a></li>
-        <li><a href="privacy.html">Privacy</a></li>
-        <li><a href="terms.html">Terms</a></li>
-      </ul>
-    </nav>
-  </header>
+
+<header>
+  <nav>
+    <ul>
+
+      <!-- CONTACT FIRST -->
+      <li class="dropdown">
+        <button class="nav-button" id="contactBtn">Contact</button>
+
+        <div class="panel" id="contactPanel">
+          <h3>Contact Coracle</h3>
+          <p>For enquiries or feedback, please get in touch by email.</p>
+
+          <a href="mailto:coracle1@btinternet.com?subject=Enquiry%20from%20Coracle%20website">
+            coracle1@btinternet.com
+          </a>
+        </div>
+      </li>
+
+      <!-- LEGAL SECOND -->
+      <li class="dropdown">
+        <button class="nav-button" id="legalBtn">Legal</button>
+
+        <div class="panel" id="legalPanel">
+          <h3>Legal</h3>
+
+          <a href="privacy.html">Privacy</a>
+          <a href="terms.html">Terms</a>
+        </div>
+      </li>
+
+    </ul>
+  </nav>
+</header>
+
+<script>
+  const contactBtn = document.getElementById("contactBtn");
+  const contactPanel = document.getElementById("contactPanel");
+
+  const legalBtn = document.getElementById("legalBtn");
+  const legalPanel = document.getElementById("legalPanel");
+
+  contactBtn.onclick = (e) => {
+    e.stopPropagation();
+    contactPanel.classList.toggle("open");
+    legalPanel.classList.remove("open");
+  };
+
+  legalBtn.onclick = (e) => {
+    e.stopPropagation();
+    legalPanel.classList.toggle("open");
+    contactPanel.classList.remove("open");
+  };
+
+  document.addEventListener("click", () => {
+    contactPanel.classList.remove("open");
+    legalPanel.classList.remove("open");
+  });
+</script>
+
 </body>
 </html>
