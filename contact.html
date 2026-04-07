@@ -1,32 +1,261 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact — Coracle</title>
-    <style>
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            margin: 2rem auto;
-            max-width: 800px;
-            padding: 0 1.5rem;
-            line-height: 1.6;
-            color: #111;
-        }
-        h1 {
-            margin-bottom: 1rem;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact | Coracle</title>
+
+  <style>
+    :root {
+      --coracle-navy: #163a5f;
+      --coracle-blue: #2f6f97;
+      --coracle-teal: #5f8f8b;
+      --coracle-light: #f5f8fa;
+      --coracle-white: #ffffff;
+      --coracle-text: #1f2933;
+      --coracle-muted: #5b6b79;
+      --coracle-border: #d9e2e8;
+      --coracle-shadow: 0 12px 28px rgba(22, 58, 95, 0.12);
+      --radius: 14px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background: linear-gradient(180deg, #f8fbfc 0%, #eef4f6 100%);
+      color: var(--coracle-text);
+      min-height: 100vh;
+    }
+
+    .site-header {
+      background: rgba(255, 255, 255, 0.92);
+      border-bottom: 1px solid var(--coracle-border);
+      backdrop-filter: blur(8px);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .site-header-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 1rem 1.5rem;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      position: relative;
+    }
+
+    .contact-wrapper {
+      position: relative;
+    }
+
+    .contact-toggle {
+      appearance: none;
+      border: 1px solid transparent;
+      background: transparent;
+      color: var(--coracle-navy);
+      font: inherit;
+      font-weight: 600;
+      padding: 0.7rem 1rem;
+      border-radius: 999px;
+      cursor: pointer;
+      transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+    }
+
+    .contact-toggle:hover,
+    .contact-toggle:focus-visible {
+      background: rgba(47, 111, 151, 0.08);
+      border-color: rgba(47, 111, 151, 0.18);
+      outline: none;
+    }
+
+    .contact-panel {
+      position: absolute;
+      top: calc(100% + 0.75rem);
+      right: 0;
+      width: min(360px, calc(100vw - 2rem));
+      background: var(--coracle-white);
+      border: 1px solid var(--coracle-border);
+      border-radius: var(--radius);
+      box-shadow: var(--coracle-shadow);
+      padding: 1.25rem 1.25rem 1.1rem;
+      display: none;
+    }
+
+    .contact-panel.open {
+      display: block;
+      animation: fadeIn 0.18s ease-out;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(-6px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .contact-panel h2 {
+      margin: 0 0 0.6rem;
+      font-size: 1.05rem;
+      line-height: 1.3;
+      color: var(--coracle-navy);
+    }
+
+    .contact-panel p {
+      margin: 0 0 1rem;
+      color: var(--coracle-muted);
+      font-size: 0.97rem;
+      line-height: 1.55;
+    }
+
+    .email-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      text-decoration: none;
+      font-weight: 600;
+      color: var(--coracle-blue);
+      background: rgba(95, 143, 139, 0.08);
+      border: 1px solid rgba(95, 143, 139, 0.18);
+      border-radius: 10px;
+      padding: 0.8rem 0.95rem;
+      transition: background 0.2s ease, transform 0.2s ease;
+      word-break: break-word;
+    }
+
+    .email-link:hover,
+    .email-link:focus-visible {
+      background: rgba(95, 143, 139, 0.14);
+      transform: translateY(-1px);
+      outline: none;
+    }
+
+    .page {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 5rem 1.5rem 2rem;
+    }
+
+    .placeholder {
+      max-width: 720px;
+      margin: 0 auto;
+      text-align: center;
+      padding: 3rem 1.5rem;
+      color: var(--coracle-muted);
+    }
+
+    .placeholder h1 {
+      color: var(--coracle-navy);
+      margin-bottom: 0.75rem;
+      font-size: clamp(2rem, 4vw, 3rem);
+      line-height: 1.15;
+    }
+
+    .placeholder p {
+      margin: 0;
+      font-size: 1.05rem;
+      line-height: 1.7;
+    }
+
+    @media (max-width: 640px) {
+      .site-header-inner {
+        padding: 0.9rem 1rem;
+      }
+
+      .contact-panel {
+        right: 0;
+        left: auto;
+      }
+
+      .placeholder {
+        padding-top: 2rem;
+      }
+    }
+  </style>
 </head>
 <body>
+  <header class="site-header">
+    <div class="site-header-inner">
+      <nav class="nav" aria-label="Top navigation">
+        <div class="contact-wrapper">
+          <button
+            class="contact-toggle"
+            id="contactToggle"
+            type="button"
+            aria-expanded="false"
+            aria-controls="contactPanel"
+          >
+            Contact
+          </button>
 
-<h1>Contact Coracle</h1>
+          <div
+            class="contact-panel"
+            id="contactPanel"
+            role="dialog"
+            aria-label="Contact panel"
+          >
+            <h2>Contact Coracle</h2>
+            <p>For enquiries or feedback, please get in touch by email.</p>
 
-<p>If you’d like to get in touch, you can reach us at:</p>
+            <a
+              class="email-link"
+              href="mailto:coracle1@btinternet.com?subject=Enquiry%20from%20Coracle%20website"
+            >
+              coracle1@btinternet.com
+            </a>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </header>
 
-<p><strong>coracle1@btinternet.com</strong></p>
+  <main class="page">
+    <section class="placeholder">
+      <h1>Coracle</h1>
+      <p>
+        Your Contact tab is now in the top right. Click it to open the email panel.
+      </p>
+    </section>
+  </main>
 
-<p>We aim to respond within 2–3 business days.</p>
+  <script>
+    const contactToggle = document.getElementById("contactToggle");
+    const contactPanel = document.getElementById("contactPanel");
 
+    contactToggle.addEventListener("click", function (event) {
+      event.stopPropagation();
+      const isOpen = contactPanel.classList.toggle("open");
+      contactToggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
+    });
+
+    document.addEventListener("click", function (event) {
+      if (!contactPanel.contains(event.target) && !contactToggle.contains(event.target)) {
+        contactPanel.classList.remove("open");
+        contactToggle.setAttribute("aria-expanded", "false");
+      }
+    });
+
+    document.addEventListener("keydown", function (event) {
+      if (event.key === "Escape") {
+        contactPanel.classList.remove("open");
+        contactToggle.setAttribute("aria-expanded", "false");
+      }
+    });
+  </script>
 </body>
 </html>
