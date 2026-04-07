@@ -13,96 +13,178 @@
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&display=swap" rel="stylesheet">
 
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Orbitron', sans-serif;
-    }
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Orbitron', sans-serif;
+}
 
-    body {
-      background: radial-gradient(circle at top, #0a1a3a, #020817);
-      color: #fff;
-      overflow-x: hidden;
-    }
+body {
+  background: radial-gradient(circle at top, #081a3a, #020617 70%);
+  color: #fff;
+  overflow-x: hidden;
+}
 
-    /* NAVBAR */
-    header {
-      position: fixed;
-      top: 0;
-      width: 100%;
-      padding: 20px 40px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background: rgba(0,0,0,0.4);
-      backdrop-filter: blur(10px);
-      z-index: 1000;
-      border-bottom: 1px solid rgba(255,255,255,0.1);
-    }
+/* NAVBAR */
+header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  padding: 20px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(0,0,0,0.5);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
 
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-size: 22px;
-      font-weight: 600;
-      color: #00a2ff;
-    }
+.logo {
+  font-size: 22px;
+  color: #00a2ff;
+  text-shadow: 0 0 10px rgba(0,162,255,0.7);
+}
 
-    nav a {
-      margin-left: 25px;
-      text-decoration: none;
-      color: #ccc;
-      transition: 0.3s;
-    }
+nav a {
+  margin-left: 25px;
+  color: #ccc;
+  text-decoration: none;
+  transition: 0.3s;
+}
 
-    nav a:hover {
-      color: #00a2ff;
-    }
+nav a:hover {
+  color: #00a2ff;
+  text-shadow: 0 0 8px #00a2ff;
+}
 
-    /* HERO SECTION */
-    .hero {
-      height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 120px 10%;
-      position: relative;
-    }
+/* HERO */
+.hero {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 120px 10%;
+  position: relative;
+}
 
-    .hero-text h1 {
-      font-size: 60px;
-      margin-bottom: 20px;
-      background: linear-gradient(90deg, #ffffff, #00a2ff);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
+/* GLOW WAVES */
+.hero::before {
+  content: "";
+  position: absolute;
+  width: 140%;
+  height: 140%;
+  top: -20%;
+  left: -20%;
+  background:
+    radial-gradient(circle at 30% 50%, rgba(0,162,255,0.25), transparent 60%),
+    radial-gradient(circle at 70% 40%, rgba(255,140,0,0.25), transparent 60%),
+    linear-gradient(120deg, rgba(0,162,255,0.15), rgba(255,140,0,0.15));
+  filter: blur(60px);
+  z-index: -1;
+}
 
-    .hero-text p {
-      font-size: 18px;
-      color: #aaa;
-    }
+/* ORANGE LIGHT STREAK */
+.hero::after {
+  content: "";
+  position: absolute;
+  width: 120%;
+  height: 300px;
+  top: 50%;
+  left: -10%;
+  background: linear-gradient(90deg, transparent, rgba(255,140,0,0.8), transparent);
+  filter: blur(40px);
+  opacity: 0.6;
+  transform: rotate(-10deg);
+}
 
-    /* WAVES BACKGROUND */
-    .waves {
-      position: absolute;
-      width: 120%;
-      height: 100%;
-      top: 0;
-      left: -10%;
-      background:
-        radial-gradient(circle at 30% 50%, rgba(0,162,255,0.2), transparent 60%),
-        radial-gradient(circle at 70% 40%, rgba(255,140,0,0.2), transparent 60%);
-      animation: moveWaves 12s infinite linear;
-      z-index: -1;
-    }
+/* TEXT */
+.hero-text h1 {
+  font-size: 60px;
+  margin-bottom: 20px;
+  background: linear-gradient(90deg, #fff, #00a2ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
 
-    @keyframes moveWaves {
-      0% { transform: translateX(0); }
-      50% { transform: translateX(-50px); }
-      100% { transform: translateX(0); }
-    }
+.hero-text p {
+  color: #aaa;
+}
+
+/* PHONE */
+.phone {
+  width: 260px;
+  height: 520px;
+  border-radius: 30px;
+  background: linear-gradient(145deg, #0d1f4d, #020617);
+  box-shadow:
+    0 0 40px rgba(0,162,255,0.4),
+    0 0 80px rgba(255,140,0,0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+/* PHONE GLOW */
+.phone::before {
+  content: "";
+  position: absolute;
+  width: 120%;
+  height: 120%;
+  background: radial-gradient(circle, rgba(0,162,255,0.3), transparent 70%);
+  filter: blur(40px);
+  z-index: -1;
+}
+
+.phone span {
+  color: #00a2ff;
+}
+
+/* SECTIONS */
+section {
+  padding: 100px 10%;
+}
+
+h2 {
+  color: #00a2ff;
+  margin-bottom: 20px;
+}
+
+p {
+  color: #bbb;
+  max-width: 600px;
+}
+
+/* CONTACT */
+.contact a {
+  color: #00a2ff;
+}
+
+/* FOOTER */
+footer {
+  text-align: center;
+  padding: 20px;
+  color: #666;
+  border-top: 1px solid rgba(255,255,255,0.1);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* MOBILE */
+@media(max-width: 900px) {
+  .hero {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .hero-text h1 {
+    font-size: 40px;
+  }
+}
+</style>
 
     /* PHONE MOCK */
     .phone {
