@@ -1,241 +1,153 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Coracle</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Your Website Name</title>
 
   <!-- Favicon -->
-  <link rel="icon" href="favicon.ico">
-
-  <!-- Orbitron Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="favicon.png" />
 
   <style>
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      font-family: 'Orbitron', sans-serif;
+    }
+
+    html, body {
+      height: 100%;
+      font-family: Arial, sans-serif;
     }
 
     body {
-      background: radial-gradient(circle at top, #081a3a, #020617 70%);
-      color: #fff;
-      overflow-x: hidden;
+      background: url("Newappweb.png") no-repeat center center fixed;
+      background-size: cover;
+      color: white;
+      position: relative;
     }
 
-    /* NAVBAR */
-    header {
+    /* Dark overlay for readability */
+    body::before {
+      content: "";
       position: fixed;
-      top: 0;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.35);
+      z-index: 0;
+    }
+
+    /* Top navigation */
+    header {
+      position: relative;
+      z-index: 2;
       width: 100%;
       padding: 20px 40px;
       display: flex;
-      justify-content: space-between;
+      justify-content: flex-end;
       align-items: center;
-      background: rgba(0, 0, 0, 0.5);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid rgba(255,255,255,0.1);
-      z-index: 1000;
     }
 
-    .logo {
-      font-size: 22px;
-      color: #00a2ff;
-      text-shadow: 0 0 10px rgba(0,162,255,0.7);
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 24px;
+      align-items: center;
     }
 
     nav a {
-      margin-left: 25px;
-      color: #ccc;
+      color: white;
       text-decoration: none;
-      transition: 0.3s;
+      font-size: 16px;
+      font-weight: 600;
+      padding: 8px 12px;
+      border-radius: 6px;
+      transition: background 0.3s ease, color 0.3s ease;
     }
 
     nav a:hover {
-      color: #00a2ff;
-      text-shadow: 0 0 8px #00a2ff;
+      background: rgba(255, 255, 255, 0.15);
+      color: #ffffff;
     }
 
-    /* HERO */
-    .hero {
-      height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 120px 10%;
+    /* Main content */
+    main {
       position: relative;
-    }
-
-    /* GLOW BACKGROUND */
-    .hero::before {
-      content: "";
-      position: absolute;
-      width: 140%;
-      height: 140%;
-      top: -20%;
-      left: -20%;
-      background:
-        radial-gradient(circle at 30% 50%, rgba(0,162,255,0.25), transparent 60%),
-        radial-gradient(circle at 70% 40%, rgba(255,140,0,0.25), transparent 60%);
-      filter: blur(60px);
-      z-index: -1;
-    }
-
-    /* ORANGE LIGHT STREAK */
-    .hero::after {
-      content: "";
-      position: absolute;
-      width: 120%;
-      height: 250px;
-      top: 50%;
-      left: -10%;
-      background: linear-gradient(90deg, transparent, rgba(255,140,0,0.7), transparent);
-      filter: blur(40px);
-      opacity: 0.6;
-      transform: rotate(-10deg);
-    }
-
-    .hero-text h1 {
-      font-size: 60px;
-      margin-bottom: 20px;
-      background: linear-gradient(90deg, #ffffff, #00a2ff);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-
-    .hero-text p {
-      font-size: 18px;
-      color: #aaa;
-    }
-
-    /* PHONE MOCK */
-    .phone {
-      width: 260px;
-      height: 520px;
-      border-radius: 30px;
-      background: linear-gradient(145deg, #0d1f4d, #020617);
-      box-shadow:
-        0 0 40px rgba(0,162,255,0.4),
-        0 0 80px rgba(255,140,0,0.2);
+      z-index: 2;
+      min-height: calc(100vh - 80px);
       display: flex;
       align-items: center;
       justify-content: center;
-      position: relative;
-    }
-
-    .phone::before {
-      content: "";
-      position: absolute;
-      width: 120%;
-      height: 120%;
-      background: radial-gradient(circle, rgba(0,162,255,0.3), transparent 70%);
-      filter: blur(40px);
-      z-index: -1;
-    }
-
-    .phone span {
-      color: #00a2ff;
-    }
-
-    /* SECTIONS */
-    section {
-      padding: 100px 10%;
-    }
-
-    h2 {
-      margin-bottom: 20px;
-      color: #00a2ff;
-    }
-
-    p {
-      color: #bbb;
-      max-width: 600px;
-    }
-
-    /* CONTACT */
-    .contact a {
-      color: #00a2ff;
-      text-decoration: none;
-    }
-
-    /* FOOTER */
-    footer {
       text-align: center;
       padding: 20px;
-      color: #666;
-      border-top: 1px solid rgba(255,255,255,0.1);
     }
 
-    html {
-      scroll-behavior: smooth;
+    .hero {
+      max-width: 900px;
+      padding: 30px;
+      background: rgba(0, 0, 0, 0.35);
+      border-radius: 16px;
+      backdrop-filter: blur(4px);
     }
 
-    /* MOBILE */
-    @media(max-width: 900px) {
-      .hero {
-        flex-direction: column;
-        text-align: center;
+    .hero h1 {
+      font-size: 3rem;
+      margin-bottom: 16px;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      line-height: 1.6;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      header {
+        padding: 16px 20px;
+        justify-content: center;
       }
 
-      .hero-text h1 {
-        font-size: 40px;
+      nav ul {
+        gap: 12px;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      nav a {
+        font-size: 14px;
+        padding: 6px 10px;
+      }
+
+      .hero h1 {
+        font-size: 2rem;
+      }
+
+      .hero p {
+        font-size: 1rem;
       }
     }
   </style>
 </head>
-
 <body>
-
-  <!-- NAVBAR -->
   <header>
-    <div class="logo">CORACLE</div>
     <nav>
-      <a href="#home">Home</a>
-      <a href="#about">About</a>
-      <a href="#contact">Get in Touch</a>
-      <a href="privacy.html">Privacy Policy</a>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="privacy.html">Privacy</a></li>
+        <li><a href="terms.html">Terms</a></li>
+      </ul>
     </nav>
   </header>
 
-  <!-- HERO -->
-  <section class="hero" id="home">
-    <div class="hero-text">
-      <h1>New App<br>Coming Soon</h1>
-      <p>Stay tuned for our innovative new app.</p>
-    </div>
-
-    <div class="phone">
-      <span>Coracle App</span>
-    </div>
-  </section>
-
-  <!-- ABOUT -->
-  <section id="about">
-    <h2>About</h2>
-    <p>
-      Coracle creates simple, powerful digital tools designed for everyday use.
-      Focused on performance and ease, we build experiences that just work.
-    </p>
-  </section>
-
-  <!-- CONTACT -->
-  <section id="contact" class="contact">
-    <h2>Get in Touch</h2>
-    <p>Email us directly:</p>
-    <p>
-      <a href="mailto:Coracle1@btinternet.com">Coracle1@btinternet.com</a>
-    </p>
-  </section>
-
-  <!-- FOOTER -->
-  <footer>
-    © 2026 Coracle. All rights reserved.
-  </footer>
-
+  <main>
+    <section class="hero">
+      <h1>Welcome to My Website</h1>
+      <p>
+        Add your main homepage text here. This page uses your saved background image
+        <strong>Newappweb.png</strong>, your favicon <strong>favicon.png</strong>,
+        and includes links to your Contact, Privacy, and Terms pages at the top.
+      </p>
+    </section>
+  </main>
 </body>
 </html>
-
-
-
