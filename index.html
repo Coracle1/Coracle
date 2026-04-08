@@ -566,54 +566,66 @@
     const privacySection = document.getElementById("privacySection");
     const termsSection = document.getElementById("termsSection");
 
-    let contactTimeout;
-    let legalTimeout;
+    let contactTimeout = null;
+    let legalTimeout = null;
 
-    function closeContactImmediate() {
-      clearTimeout(contactTimeout);
-      contactPanel.classList.remove("open");
-      contactBtn.classList.remove("active");
+    function cancelContactClose() {
+      if (contactTimeout) {
+        clearTimeout(contactTimeout);
+        contactTimeout = null;
+      }
     }
 
-    function closeLegalImmediate() {
-      clearTimeout(legalTimeout);
-      legalOverlay.classList.remove("open");
-      legalBtn.classList.remove("active");
-    }
-
-    function closeAllImmediate() {
-      closeContactImmediate();
-      closeLegalImmediate();
+    function cancelLegalClose() {
+      if (legalTimeout) {
+        clearTimeout(legalTimeout);
+        legalTimeout = null;
+      }
     }
 
     function openContact() {
-      clearTimeout(contactTimeout);
+      cancelContactClose();
       closeLegalImmediate();
       contactPanel.classList.add("open");
       contactBtn.classList.add("active");
     }
 
-    function scheduleCloseContact() {
-      clearTimeout(contactTimeout);
+    function closeContactImmediate() {
+      cancelContactClose();
+      contactPanel.classList.remove("open");
+      contactBtn.classList.remove("active");
+    }
+
+    function scheduleContactClose() {
+      cancelContactClose();
       contactTimeout = setTimeout(() => {
-        contactPanel.classList.remove("open");
-        contactBtn.classList.remove("active");
+        closeContactImmediate();
       }, 180);
     }
 
     function openLegal() {
-      clearTimeout(legalTimeout);
+      cancelLegalClose();
       closeContactImmediate();
       legalOverlay.classList.add("open");
       legalBtn.classList.add("active");
     }
 
-    function scheduleCloseLegal() {
-      clearTimeout(legalTimeout);
+    function closeLegalImmediate() {
+      cancelLegalClose();
+      legalOverlay.classList.remove("open");
+      legalBtn.classList.remove("active");
+    }
+
+    function scheduleLegalClose() {
+      cancelLegalClose();
       legalTimeout = setTimeout(() => {
-        legalOverlay.classList.remove("open");
-        legalBtn.classList.remove("active");
+        closeLegalImmediate();
       }, 180);
+    }
+
+    function closeAllImmediate() {
+      closeContactImmediate();
+      closeLegalImmediate();
     }
 
     function showPrivacy() {
@@ -630,9 +642,8 @@
       privacySection.classList.remove("active");
     }
 
-    contactBtn.addEventListener("mouseenter", openContact);
-    contactDropdown.addEventListener("mouseleave", scheduleCloseContact);
-    contactDropdown.addEventListener("mouseenter", () => clearTimeout(contactTimeout));
+    contactDropdown.addEventListener("mouseenter", openContact);
+    contactDropdown.addEventListener("mouseleave", scheduleContactClose);
 
     contactBtn.addEventListener("click", (e) => {
       e.stopPropagation();
@@ -643,10 +654,11 @@
       }
     });
 
-    legalBtn.addEventListener("mouseenter", openLegal);
-    legalBtn.addEventListener("mouseleave", scheduleCloseLegal);
-    legalOverlay.addEventListener("mouseenter", () => clearTimeout(legalTimeout));
-    legalOverlay.addEventListener("mouseleave", scheduleCloseLegal);
+    legalDropdown.addEventListener("mouseenter", openLegal);
+    legalDropdown.addEventListener("mouseleave", scheduleLegalClose);
+
+    legalOverlay.addEventListener("mouseenter", cancelLegalClose);
+    legalOverlay.addEventListener("mouseleave", scheduleLegalClose);
 
     legalBtn.addEventListener("click", (e) => {
       e.stopPropagation();
@@ -686,4 +698,7 @@
         closeAllImmediate();
       }
     });
-  </scrip
+  </script>
+
+</body>
+</html>
