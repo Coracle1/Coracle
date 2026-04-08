@@ -29,10 +29,9 @@
       color: white;
     }
 
-    /* HEADER */
     header {
       width: 100%;
-      padding: 20px 80px 20px 40px; /* ← shifted slightly left */
+      padding: 20px 120px 20px 40px;
       display: flex;
       justify-content: flex-end;
       align-items: center;
@@ -56,7 +55,6 @@
       gap: 24px;
     }
 
-    /* NAV BUTTONS */
     .nav-button {
       font-family: "Orbitron", sans-serif;
       color: #7fd1c8;
@@ -72,19 +70,16 @@
       transition: color 0.3s ease, text-shadow 0.3s ease;
     }
 
-    /* HOVER GLOW */
     .nav-button:hover {
       color: #ffffff;
       text-shadow: 0 0 6px rgba(127, 209, 200, 0.6);
     }
 
-    /* ACTIVE (OPEN) STATE */
     .nav-button.active {
       color: #ffffff;
-      text-shadow: 0 0 10px rgba(127, 209, 200, 0.8);
+      text-shadow: 0 0 10px rgba(127, 209, 200, 0.85);
     }
 
-    /* ORANGE WAVE UNDERLINE */
     .nav-button::after {
       content: "";
       position: absolute;
@@ -102,7 +97,6 @@
       width: 80%;
     }
 
-    /* DROPDOWN */
     .dropdown {
       position: relative;
     }
@@ -120,7 +114,8 @@
       backdrop-filter: blur(6px);
       transform: translateY(-8px);
       opacity: 0;
-      transition: all 0.25s ease;
+      transition: opacity 0.25s ease, transform 0.25s ease;
+      z-index: 1000;
     }
 
     .panel.open {
@@ -149,6 +144,10 @@
       margin-bottom: 8px;
     }
 
+    .panel a:last-child {
+      margin-bottom: 0;
+    }
+
     .panel a:hover {
       text-decoration: underline;
     }
@@ -172,32 +171,25 @@
 <header>
   <nav>
     <ul>
-
-      <!-- CONTACT -->
       <li class="dropdown">
-        <button class="nav-button" id="contactBtn">Contact</button>
-
+        <button class="nav-button" id="contactBtn" type="button">Contact</button>
         <div class="panel" id="contactPanel">
           <h3>Contact Coracle</h3>
           <p>For enquiries or feedback, please get in touch by email.</p>
-
           <a href="mailto:coracle1@btinternet.com?subject=Enquiry%20from%20Coracle%20website">
             coracle1@btinternet.com
           </a>
         </div>
       </li>
 
-      <!-- LEGAL -->
       <li class="dropdown">
-        <button class="nav-button" id="legalBtn">Legal</button>
-
+        <button class="nav-button" id="legalBtn" type="button">Legal</button>
         <div class="panel" id="legalPanel">
           <h3>Legal</h3>
           <a href="privacy.html">Privacy</a>
           <a href="terms.html">Terms</a>
         </div>
       </li>
-
     </ul>
   </nav>
 </header>
@@ -216,29 +208,43 @@
     legalBtn.classList.remove("active");
   }
 
-  contactBtn.onclick = (e) => {
+  contactBtn.addEventListener("click", (e) => {
     e.stopPropagation();
     const isOpen = contactPanel.classList.contains("open");
     closeAll();
-
     if (!isOpen) {
       contactPanel.classList.add("open");
       contactBtn.classList.add("active");
     }
-  };
+  });
 
-  legalBtn.onclick = (e) => {
+  legalBtn.addEventListener("click", (e) => {
     e.stopPropagation();
     const isOpen = legalPanel.classList.contains("open");
     closeAll();
-
     if (!isOpen) {
       legalPanel.classList.add("open");
       legalBtn.classList.add("active");
     }
-  };
+  });
 
-  document.addEventListener("click", closeAll);
+  contactPanel.addEventListener("click", (e) => {
+    e.stopPropagation();
+  });
+
+  legalPanel.addEventListener("click", (e) => {
+    e.stopPropagation();
+  });
+
+  document.addEventListener("click", () => {
+    closeAll();
+  });
+
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") {
+      closeAll();
+    }
+  });
 </script>
 
 </body>
