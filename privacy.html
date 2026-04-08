@@ -1,60 +1,328 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Privacy Policy — Coracle</title>
-    <style>
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            margin: 2rem auto;
-            max-width: 800px;
-            padding: 0 1.5rem;
-            line-height: 1.6;
-            color: #111;
-        }
-        h1 {
-            margin-bottom: 1rem;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Privacy | Coracle</title>
+
+  <link rel="icon" type="image/png" href="favicon.png" />
+
+  <!-- Orbitron -->
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;600&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      min-height: 100%;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background: url("Newappweb.png") no-repeat center center fixed;
+      background-size: contain;
+      background-color: black;
+      color: white;
+    }
+
+    header {
+      width: 100%;
+      padding: 20px 40px;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      position: relative;
+    }
+
+    header::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 70px;
+      background: rgba(0, 0, 0, 0.4);
+      z-index: -1;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 24px;
+    }
+
+    .dropdown {
+      position: relative;
+    }
+
+    .nav-button {
+      font-family: "Orbitron", sans-serif;
+      color: white;
+      background: transparent;
+      border: none;
+      font-size: 14px;
+      letter-spacing: 1px;
+      font-weight: 600;
+      cursor: pointer;
+      padding: 8px 12px;
+      border-radius: 6px;
+      transition: background 0.3s ease;
+    }
+
+    .nav-button:hover {
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+    .panel {
+      position: absolute;
+      top: 40px;
+      right: 0;
+      background: rgba(20, 30, 40, 0.95);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 10px;
+      padding: 14px;
+      width: 260px;
+      display: none;
+      z-index: 10;
+    }
+
+    .panel.open {
+      display: block;
+    }
+
+    .panel p {
+      font-size: 13px;
+      margin-bottom: 10px;
+      color: #ddd;
+      line-height: 1.5;
+    }
+
+    .panel a {
+      display: block;
+      color: #7fd1c8;
+      margin-bottom: 8px;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .panel a:last-child {
+      margin-bottom: 0;
+    }
+
+    .panel a:hover {
+      text-decoration: underline;
+    }
+
+    .content {
+      max-width: 820px;
+      margin: 80px auto;
+      padding: 28px;
+      background: rgba(0, 0, 0, 0.78);
+      border-radius: 12px;
+      line-height: 1.75;
+    }
+
+    h1 {
+      margin-bottom: 12px;
+      font-size: 32px;
+    }
+
+    h2 {
+      margin-top: 26px;
+      margin-bottom: 8px;
+      font-size: 18px;
+    }
+
+    p {
+      margin-bottom: 12px;
+    }
+
+    ul {
+      margin-left: 22px;
+      margin-bottom: 12px;
+    }
+
+    a.inline-link {
+      color: #7fd1c8;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    a.inline-link:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 768px) {
+      header {
+        justify-content: center;
+        padding: 16px;
+      }
+
+      nav ul {
+        gap: 12px;
+        flex-wrap: wrap;
+      }
+
+      .content {
+        margin: 40px 16px;
+        padding: 22px;
+      }
+
+      h1 {
+        font-size: 28px;
+      }
+    }
+  </style>
 </head>
+
 <body>
 
-<h1>Privacy Policy</h1>
+  <header>
+    <nav>
+      <ul>
+        <!-- CONTACT -->
+        <li class="dropdown">
+          <button class="nav-button" id="contactBtn" type="button">Contact</button>
 
-<p>Last updated: April 2026</p>
+          <div class="panel" id="contactPanel">
+            <p>For enquiries or feedback, please get in touch by email.</p>
+            <a href="mailto:coracle1@btinternet.com?subject=Enquiry%20from%20Coracle%20website">
+              coracle1@btinternet.com
+            </a>
+          </div>
+        </li>
 
-<p>Coracle (“we”, “us”, or “our”) is committed to protecting your privacy.  
-This website is a simple informational site and does not collect personal data unless you choose to contact us directly.</p>
+        <!-- LEGAL -->
+        <li class="dropdown">
+          <button class="nav-button" id="legalBtn" type="button">Legal</button>
 
-<h2>Information We Collect</h2>
-<p>We do not automatically collect personal information from visitors.  
-The only information we may receive is what you voluntarily provide, such as when you contact us by email.</p>
+          <div class="panel" id="legalPanel">
+            <a href="privacy.html">Privacy</a>
+            <a href="terms.html">Terms</a>
+          </div>
+        </li>
+      </ul>
+    </nav>
+  </header>
 
-<h2>How We Use Information</h2>
-<p>If you contact us, we will use your email address solely for the purpose of responding to your enquiry.  
-We do not sell, share, or use your information for marketing.</p>
+  <main class="content">
+    <h1>Privacy</h1>
+    <p><strong>Last updated:</strong> April 2026</p>
 
-<h2>Cookies and Tracking</h2>
-<p>This website does not use cookies, analytics tools, or tracking technologies.</p>
+    <h2>Who we are</h2>
+    <p>
+      This website is operated by Coracle. If you have any questions about this privacy
+      information or about how your personal information is handled, please contact
+      <a class="inline-link" href="mailto:coracle1@btinternet.com">coracle1@btinternet.com</a>.
+    </p>
 
-<h2>Third‑Party Services</h2>
-<p>This website is hosted using GitHub Pages. GitHub may collect basic technical information such as IP address or browser type as part of standard web hosting operations.  
-You can read GitHub’s privacy practices on their official website.</p>
+    <h2>Overview</h2>
+    <p>
+      Coracle respects your privacy. This website does not actively collect or store
+      personal data through the website itself.
+    </p>
 
-<h2>Data Retention</h2>
-<p>If you contact us, we retain your message only for as long as necessary to respond.  
-We do not maintain long‑term databases of personal information.</p>
+    <h2>Information you provide</h2>
+    <p>
+      If you contact us by email, we will receive the information you include in your
+      message, such as your email address and any details you choose to share.
+    </p>
 
-<h2>Your Rights</h2>
-<p>If you have contacted us and wish to request deletion of your message or personal information, you may do so at any time.</p>
+    <h2>How we use information</h2>
+    <p>
+      We use this information solely to respond to your enquiry or feedback.
+    </p>
 
-<h2>Contact Us</h2>
-<p>If you have questions about this Privacy Policy, you can reach us at:</p>
+    <h2>Data sharing</h2>
+    <p>
+      We do not sell, rent, or share your personal information with third parties.
+    </p>
 
-<p><strong>your-email@domain.com</strong></p>
+    <h2>Legal basis</h2>
+    <p>
+      Where personal information is processed, it is done on the basis of legitimate
+      interest in responding to communications initiated by you.
+    </p>
 
-<p>This policy will be updated as our services evolve, including the launch of our upcoming app.</p>
+    <h2>Data retention</h2>
+    <p>
+      We keep personal information only for as long as reasonably necessary to respond
+      to your enquiry or maintain relevant correspondence.
+    </p>
+
+    <h2>Your rights</h2>
+    <ul>
+      <li>Request access to your personal data</li>
+      <li>Request correction of inaccurate personal data</li>
+      <li>Request deletion of your personal data where appropriate</li>
+      <li>Object to the processing of your personal data</li>
+    </ul>
+
+    <p>
+      To exercise these rights, please contact
+      <a class="inline-link" href="mailto:coracle1@btinternet.com">coracle1@btinternet.com</a>.
+    </p>
+
+    <h2>Hosting</h2>
+    <p>
+      This website is hosted using GitHub Pages. As part of normal website operation,
+      the hosting provider may process limited technical data such as IP addresses and
+      request logs. This data is not accessed or used by Coracle.
+    </p>
+
+    <h2>Cookies and analytics</h2>
+    <p>
+      This website does not use cookies for tracking or analytics purposes.
+    </p>
+
+    <h2>Automated decision-making</h2>
+    <p>
+      This website does not use automated decision-making or profiling.
+    </p>
+
+    <h2>Third-party platforms</h2>
+    <p>
+      This website may include links to third-party platforms where Coracle applications
+      are made available. Those platforms operate under their own terms and privacy
+      policies.
+    </p>
+
+    <h2>Changes to this policy</h2>
+    <p>
+      We may update this privacy information from time to time. Any changes will be
+      posted on this page.
+    </p>
+
+  </main>
+
+  <script>
+    const contactBtn = document.getElementById("contactBtn");
+    const contactPanel = document.getElementById("contactPanel");
+
+    const legalBtn = document.getElementById("legalBtn");
+    const legalPanel = document.getElementById("legalPanel");
+
+    contactBtn.onclick = (e) => {
+      e.stopPropagation();
+      contactPanel.classList.toggle("open");
+      legalPanel.classList.remove("open");
+    };
+
+    legalBtn.onclick = (e) => {
+      e.stopPropagation();
+      legalPanel.classList.toggle("open");
+      contactPanel.classList.remove("open");
+    };
+
+    document.addEventListener("click", () => {
+      contactPanel.classList.remove("open");
+      legalPanel.classList.remove("open");
+    });
+  </script>
 
 </body>
 </html>
