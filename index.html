@@ -21,10 +21,15 @@
     }
 
     body {
-      background: url("newappweb2.png") no-repeat top center;
-      background-size: 100vw auto; /* ✅ FIXED */
-      background-color: black;
+      background-color: black; /* ✅ background image removed */
       color: white;
+    }
+
+    /* ✅ NEW: full-width image */
+    .hero-bg {
+      width: 100%;
+      height: auto;
+      display: block;
     }
 
     header {
@@ -308,6 +313,9 @@
 </head>
 
 <body>
+
+  <!-- ✅ NEW image -->
+  <img src="newappweb2.png" class="hero-bg" alt="">
 
   <!-- everything else unchanged -->
 
