@@ -29,6 +29,8 @@
     .hero-image-wrap {
       width: 100%;
       position: relative;
+      min-height: 100vh;
+      overflow: hidden;
     }
 
     .hero-bg {
@@ -290,14 +292,46 @@
     }
 
     @media (max-width: 768px) {
+      .hero-bg {
+        width: 100%;
+        height: 100vh;
+        object-fit: cover;
+        object-position: center;
+      }
+
       header {
+        top: auto;
+        bottom: 0;
+        left: 0;
+        width: 100%;
         justify-content: center;
-        padding: 16px;
+        padding: 12px 16px;
+      }
+
+      header::before {
+        inset: auto 0 0 0;
+        height: 72px;
+        background: rgba(0, 0, 0, 0.6);
+        backdrop-filter: blur(8px);
       }
 
       nav ul {
-        gap: 12px;
+        gap: 10px;
         flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .nav-button {
+        font-size: 13px;
+        padding: 6px 10px;
+      }
+
+      .contact-panel {
+        top: auto;
+        bottom: 46px;
+        right: 50%;
+        transform: translateX(50%);
+        width: min(260px, 90vw);
       }
 
       .legal-overlay {
@@ -652,8 +686,16 @@
       privacySection.classList.remove("active");
     }
 
-    contactDropdown.addEventListener("mouseenter", openContact);
-    contactDropdown.addEventListener("mouseleave", scheduleContactClose);
+    if (window.innerWidth > 768) {
+      contactDropdown.addEventListener("mouseenter", openContact);
+      contactDropdown.addEventListener("mouseleave", scheduleContactClose);
+
+      legalDropdown.addEventListener("mouseenter", openLegal);
+      legalDropdown.addEventListener("mouseleave", scheduleLegalClose);
+
+      legalOverlay.addEventListener("mouseenter", cancelLegalClose);
+      legalOverlay.addEventListener("mouseleave", scheduleLegalClose);
+    }
 
     contactBtn.addEventListener("click", (e) => {
       e.stopPropagation();
@@ -663,12 +705,6 @@
         openContact();
       }
     });
-
-    legalDropdown.addEventListener("mouseenter", openLegal);
-    legalDropdown.addEventListener("mouseleave", scheduleLegalClose);
-
-    legalOverlay.addEventListener("mouseenter", cancelLegalClose);
-    legalOverlay.addEventListener("mouseleave", scheduleLegalClose);
 
     legalBtn.addEventListener("click", (e) => {
       e.stopPropagation();
