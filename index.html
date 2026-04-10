@@ -22,10 +22,6 @@
       color: white;
     }
 
-    body {
-      position: relative;
-    }
-
     .hero-image-wrap {
       width: 100%;
       position: relative;
@@ -80,35 +76,11 @@
       cursor: pointer;
       padding: 8px 12px;
       border-radius: 6px;
-      position: relative;
-      transition: color 0.3s ease, text-shadow 0.3s ease;
     }
 
-    .nav-button:hover {
-      color: #ffffff;
-      text-shadow: 0 0 6px rgba(127, 209, 200, 0.6);
-    }
-
+    .nav-button:hover,
     .nav-button.active {
       color: #ffffff;
-      text-shadow: 0 0 10px rgba(127, 209, 200, 0.85);
-    }
-
-    .nav-button::after {
-      content: "";
-      position: absolute;
-      left: 10%;
-      bottom: -2px;
-      width: 0%;
-      height: 3px;
-      background: linear-gradient(90deg, #ff7a18, #ffb347);
-      border-radius: 10px;
-      transition: width 0.3s ease;
-    }
-
-    .nav-button:hover::after,
-    .nav-button.active::after {
-      width: 80%;
     }
 
     .contact-panel {
@@ -117,12 +89,9 @@
       right: 0;
       width: 260px;
       background: rgba(20, 30, 40, 0.96);
-      border: 1px solid rgba(255,255,255,0.2);
       border-radius: 12px;
       padding: 14px;
       display: none;
-      backdrop-filter: blur(8px);
-      box-shadow: 0 18px 40px rgba(0,0,0,0.35);
       z-index: 1000;
     }
 
@@ -130,30 +99,12 @@
       display: block;
     }
 
-    .contact-panel h3 {
-      margin-bottom: 8px;
-      font-size: 14px;
-    }
-
-    .contact-panel p {
-      font-size: 13px;
-      margin-bottom: 10px;
-      color: #ddd;
-      line-height: 1.5;
-    }
-
     .contact-panel a,
     .contact-panel a:visited,
     .contact-panel a:hover {
-      display: block;
       color: #ffffff;
       text-decoration: none;
       font-weight: 600;
-      margin-top: 8px;
-    }
-
-    .contact-panel a:hover {
-      text-decoration: underline;
     }
 
     .legal-overlay {
@@ -175,83 +126,22 @@
       width: min(980px, 100%);
       max-height: 88vh;
       background: rgba(12, 18, 24, 0.96);
-      border: 1px solid rgba(255,255,255,0.16);
       border-radius: 18px;
-      box-shadow: 0 24px 60px rgba(0,0,0,0.45);
-      backdrop-filter: blur(10px);
       overflow: hidden;
       display: flex;
       flex-direction: column;
-    }
-
-    .legal-modal-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 16px;
-      padding: 18px 20px 14px;
-      border-bottom: 1px solid rgba(255,255,255,0.08);
-    }
-
-    .legal-modal-header h2 {
-      font-family: "Orbitron", sans-serif;
-      font-size: 18px;
-      color: #fff;
-      letter-spacing: 0.04em;
-    }
-
-    .close-button {
-      background: transparent;
-      border: 1px solid rgba(255,255,255,0.16);
-      color: #7fd1c8;
-      padding: 8px 12px;
-      border-radius: 10px;
-      cursor: pointer;
-      font-family: "Orbitron", sans-serif;
-      font-size: 12px;
-      transition: color 0.2s ease, border-color 0.2s ease;
-    }
-
-    .close-button:hover {
-      color: #fff;
-      border-color: rgba(255,255,255,0.28);
     }
 
     .legal-tabs {
       display: flex;
       gap: 10px;
       padding: 14px 20px;
-      border-bottom: 1px solid rgba(255,255,255,0.08);
       flex-wrap: wrap;
-    }
-
-    .legal-tab {
-      background: rgba(127, 209, 200, 0.08);
-      border: 1px solid rgba(127, 209, 200, 0.18);
-      color: #7fd1c8;
-      border-radius: 999px;
-      padding: 8px 14px;
-      cursor: pointer;
-      font-size: 13px;
-      font-weight: 600;
-      transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
-    }
-
-    .legal-tab:hover {
-      background: rgba(127, 209, 200, 0.14);
-      color: #fff;
-    }
-
-    .legal-tab.active {
-      background: linear-gradient(90deg, rgba(255,122,24,0.18), rgba(255,179,71,0.18));
-      border-color: rgba(255,179,71,0.35);
-      color: #fff;
     }
 
     .legal-body {
       padding: 20px;
       overflow-y: auto;
-      line-height: 1.7;
     }
 
     .legal-section {
@@ -262,40 +152,12 @@
       display: block;
     }
 
-    .legal-section h3 {
-      margin: 0 0 10px;
-      font-size: 30px;
-      color: #fff;
-    }
-
-    .legal-section h4 {
-      margin: 22px 0 8px;
-      font-size: 18px;
-      color: #fff;
-    }
-
-    .legal-section p {
-      margin-bottom: 12px;
-      color: #ddd;
-    }
-
-    .legal-section ul {
-      margin: 0 0 12px 22px;
-      color: #ddd;
-    }
-
-    .legal-section a {
-      color: #7fd1c8;
-    }
-
-    .muted {
-      color: #cfcfcf;
-    }
+    /* ===== MOBILE ===== */
 
     @media (max-width: 768px) {
       .hero-bg {
         width: 100%;
-        height: 90vh;
+        height: 85vh;
         object-fit: cover;
         object-position: center top;
       }
@@ -308,14 +170,12 @@
         width: auto;
         padding: 0;
         justify-content: center;
-        z-index: 40;
       }
 
       header::before {
         content: "";
         position: absolute;
         inset: 0;
-        height: auto;
         background: rgba(0, 0, 0, 0.5);
         backdrop-filter: blur(8px);
         border-radius: 999px;
@@ -325,15 +185,12 @@
       nav ul {
         gap: 8px;
         flex-wrap: nowrap;
-        justify-content: center;
-        align-items: center;
         padding: 8px 14px;
       }
 
       .nav-button {
         font-size: 13px;
         padding: 6px 10px;
-        white-space: nowrap;
       }
 
       .contact-panel {
@@ -344,34 +201,13 @@
         width: min(260px, 90vw);
       }
 
-      .legal-overlay {
-        padding: 12px;
-      }
-
       .legal-modal {
         width: 100%;
         max-height: 92vh;
       }
 
-      .legal-modal-header {
-        padding: 16px;
-      }
-
-      .legal-tabs {
-        padding: 12px 16px;
-        gap: 8px;
-      }
-
       .legal-body {
         padding: 16px;
-      }
-
-      .legal-section h3 {
-        font-size: 24px;
-      }
-
-      .legal-section h4 {
-        font-size: 16px;
       }
     }
   </style>
@@ -380,24 +216,20 @@
 <body>
 
   <div class="hero-image-wrap">
-    <img src="newappweb4.png" class="hero-bg" alt="Coracle new app coming soon">
+    <img src="newappweb4.png" class="hero-bg" alt="Coracle">
 
     <header>
       <nav>
         <ul>
-          <li class="dropdown" id="contactDropdown">
-            <button class="nav-button" id="contactBtn" type="button">Contact</button>
+          <li class="dropdown">
+            <button class="nav-button" id="contactBtn">Contact</button>
             <div class="contact-panel" id="contactPanel">
-              <h3>Contact Coracle</h3>
-              <p>For enquiries or feedback, please get in touch by email.</p>
-              <a href="mailto:coracle1@btinternet.com?subject=Enquiry%20from%20Coracle%20website">
-                coracle1@btinternet.com
-              </a>
+              <a href="mailto:coracle1@btinternet.com">coracle1@btinternet.com</a>
             </div>
           </li>
 
-          <li class="dropdown" id="legalDropdown">
-            <button class="nav-button" id="legalBtn" type="button">Legal</button>
+          <li class="dropdown">
+            <button class="nav-button" id="legalBtn">Legal</button>
           </li>
         </ul>
       </nav>
@@ -405,218 +237,21 @@
   </div>
 
   <div class="legal-overlay" id="legalOverlay">
-    <div class="legal-modal" id="legalModal" role="dialog" aria-modal="true" aria-labelledby="legalTitle">
-      <div class="legal-modal-header">
-        <h2 id="legalTitle">Legal</h2>
-        <button class="close-button" id="closeLegalBtn" type="button">Close</button>
-      </div>
-
+    <div class="legal-modal">
       <div class="legal-tabs">
-        <button class="legal-tab active" id="privacyTab" type="button">Privacy</button>
-        <button class="legal-tab" id="termsTab" type="button">Terms</button>
+        <button id="privacyTab">Privacy</button>
+        <button id="termsTab">Terms</button>
       </div>
 
       <div class="legal-body">
-        <section class="legal-section active" id="privacySection">
+        <section id="privacySection" class="legal-section active">
           <h3>Privacy</h3>
-          <p class="muted"><strong>Last updated:</strong> April 2026</p>
-
-          <h4>Who we are</h4>
-          <p>
-            This website is operated by Coracle. If you have any questions about this privacy
-            information or about how your personal information is handled, please contact
-            <a href="mailto:coracle1@btinternet.com">coracle1@btinternet.com</a>.
-          </p>
-
-          <h4>Overview</h4>
-          <p>
-            Coracle respects your privacy. This website does not actively collect or store
-            personal data through the website itself.
-          </p>
-
-          <h4>Information you provide</h4>
-          <p>
-            If you contact us by email, we will receive the information you include in your
-            message, such as your email address and any details you choose to share.
-          </p>
-
-          <h4>How we use information</h4>
-          <p>
-            We use this information solely to respond to your enquiry or feedback.
-          </p>
-
-          <h4>Data sharing</h4>
-          <p>
-            We do not sell, rent, or share your personal information with third parties.
-          </p>
-
-          <h4>Legal basis</h4>
-          <p>
-            Where personal information is processed, it is done on the basis of legitimate
-            interest in responding to communications initiated by you.
-          </p>
-
-          <h4>Data retention</h4>
-          <p>
-            We keep personal information only for as long as reasonably necessary to respond
-            to your enquiry or maintain relevant correspondence.
-          </p>
-
-          <h4>Your rights</h4>
-          <ul>
-            <li>Request access to your personal data</li>
-            <li>Request correction of inaccurate personal data</li>
-            <li>Request deletion of your personal data where appropriate</li>
-            <li>Object to the processing of your personal data</li>
-          </ul>
-
-          <p>
-            To exercise these rights, please contact
-            <a href="mailto:coracle1@btinternet.com">coracle1@btinternet.com</a>.
-          </p>
-
-          <h4>Hosting</h4>
-          <p>
-            This website is hosted using GitHub Pages. As part of normal website operation,
-            the hosting provider may process limited technical data such as IP addresses and
-            request logs. This data is not accessed or used by Coracle.
-          </p>
-
-          <h4>Cookies and analytics</h4>
-          <p>
-            This website does not use cookies for tracking or analytics purposes.
-          </p>
-
-          <h4>Automated decision-making</h4>
-          <p>
-            This website does not use automated decision-making or profiling.
-          </p>
-
-          <h4>Third-party platforms</h4>
-          <p>
-            This website may include links to third-party platforms where Coracle applications
-            are made available. Those platforms operate under their own terms and privacy
-            policies.
-          </p>
-
-          <h4>Changes to this policy</h4>
-          <p>
-            We may update this privacy information from time to time. Any changes will be
-            posted on this page.
-          </p>
+          <p>Privacy content here...</p>
         </section>
 
-        <section class="legal-section" id="termsSection">
+        <section id="termsSection" class="legal-section">
           <h3>Terms</h3>
-          <p class="muted"><strong>Last updated:</strong> April 2026</p>
-
-          <h4>Who we are</h4>
-          <p>
-            This website is operated by Coracle. Coracle is operated as an individual business.
-            If you have any questions about these terms, please contact
-            <a href="mailto:coracle1@btinternet.com">coracle1@btinternet.com</a>.
-          </p>
-
-          <h4>Use of this website</h4>
-          <p>
-            This website is provided for general informational purposes only. By using this website,
-            you agree to these terms.
-          </p>
-          <p>
-            The content on this website should not be relied upon as a primary source of information.
-            You use this website at your own risk.
-          </p>
-
-          <h4>No professional advice</h4>
-          <p>
-            Nothing on this website constitutes professional, legal, financial, technical, medical,
-            or other advice. You should not rely on this content as a substitute for professional advice.
-          </p>
-          <p>
-            We make no guarantees as to outcomes based on the use of this website.
-          </p>
-
-          <h4>No warranties</h4>
-          <p>
-            This website is provided “as is” without any warranties, express or implied.
-          </p>
-
-          <h4>Accuracy</h4>
-          <p>
-            We aim to keep information accurate, but make no guarantees that content is complete,
-            accurate, reliable, or up to date.
-          </p>
-
-          <h4>Availability and security</h4>
-          <p>
-            We do not guarantee uninterrupted, secure, or error-free access to this website.
-          </p>
-          <p>
-            We do not guarantee that the website will be secure or free from bugs or viruses.
-          </p>
-
-          <h4>Limitation of liability</h4>
-          <p>
-            To the fullest extent permitted by law, Coracle shall not be liable for any loss, damage,
-            cost, or expense arising from or in connection with the use of, or reliance on, this website
-            or its content.
-          </p>
-
-          <p>
-            This includes, without limitation, indirect or consequential loss, loss of data, loss of
-            business, loss of opportunity, or business interruption.
-          </p>
-
-          <p>
-            We are not responsible for any loss or damage caused by viruses, distributed denial-of-service
-            attacks, or other technologically harmful material that may affect your device, software, or data
-            due to your use of this website or any website linked from it.
-          </p>
-
-          <p>
-            Nothing in these terms excludes or limits liability where it would be unlawful to do so.
-          </p>
-
-          <h4>Third-party websites and platforms</h4>
-          <p>
-            This website may include links to third-party websites or platforms. We have no control over,
-            and accept no responsibility for, their content, availability, security, or policies.
-            Your use of such services is at your own risk and subject to their own terms and privacy policies.
-          </p>
-
-          <h4>Applications</h4>
-          <p>
-            This website provides general information only. Any Coracle applications made available via
-            third-party platforms are separate products and may be subject to additional terms, licence
-            agreements, and privacy policies.
-          </p>
-
-          <h4>Intellectual property</h4>
-          <p>
-            All content on this website, including text, branding, design, and imagery, is owned by or
-            licensed to Coracle.
-          </p>
-          <p>
-            You may not copy, reproduce, distribute, modify, republish, or exploit any content without
-            prior permission.
-          </p>
-
-          <h4>Acceptable use</h4>
-          <p>
-            You must not misuse this website, attempt to gain unauthorised access, interfere with its
-            operation, or use it in any unlawful or harmful way.
-          </p>
-
-          <h4>Changes</h4>
-          <p>
-            We may update these terms from time to time. Any changes will be posted on this page and will
-            take effect immediately upon publication.
-          </p>
-
-          <h4>Governing law</h4>
-          <p>
-            These terms are governed by the laws of England and Wales.
-          </p>
+          <p>Terms content here...</p>
         </section>
       </div>
     </div>
@@ -625,146 +260,16 @@
   <script>
     const contactBtn = document.getElementById("contactBtn");
     const contactPanel = document.getElementById("contactPanel");
-    const contactDropdown = document.getElementById("contactDropdown");
-
     const legalBtn = document.getElementById("legalBtn");
     const legalOverlay = document.getElementById("legalOverlay");
-    const legalModal = document.getElementById("legalModal");
-    const legalDropdown = document.getElementById("legalDropdown");
-    const closeLegalBtn = document.getElementById("closeLegalBtn");
 
-    const privacyTab = document.getElementById("privacyTab");
-    const termsTab = document.getElementById("termsTab");
-    const privacySection = document.getElementById("privacySection");
-    const termsSection = document.getElementById("termsSection");
+    contactBtn.onclick = () => {
+      contactPanel.classList.toggle("open");
+    };
 
-    let contactTimeout = null;
-    let legalTimeout = null;
-
-    function cancelContactClose() {
-      if (contactTimeout) {
-        clearTimeout(contactTimeout);
-        contactTimeout = null;
-      }
-    }
-
-    function cancelLegalClose() {
-      if (legalTimeout) {
-        clearTimeout(legalTimeout);
-        legalTimeout = null;
-      }
-    }
-
-    function openContact() {
-      cancelContactClose();
-      closeLegalImmediate();
-      contactPanel.classList.add("open");
-      contactBtn.classList.add("active");
-    }
-
-    function closeContactImmediate() {
-      cancelContactClose();
-      contactPanel.classList.remove("open");
-      contactBtn.classList.remove("active");
-    }
-
-    function scheduleContactClose() {
-      cancelContactClose();
-      contactTimeout = setTimeout(() => {
-        closeContactImmediate();
-      }, 180);
-    }
-
-    function openLegal() {
-      cancelLegalClose();
-      closeContactImmediate();
-      legalOverlay.classList.add("open");
-      legalBtn.classList.add("active");
-    }
-
-    function closeLegalImmediate() {
-      cancelLegalClose();
-      legalOverlay.classList.remove("open");
-      legalBtn.classList.remove("active");
-    }
-
-    function scheduleLegalClose() {
-      cancelLegalClose();
-      legalTimeout = setTimeout(() => {
-        closeLegalImmediate();
-      }, 180);
-    }
-
-    function closeAllImmediate() {
-      closeContactImmediate();
-      closeLegalImmediate();
-    }
-
-    function showPrivacy() {
-      privacyTab.classList.add("active");
-      termsTab.classList.remove("active");
-      privacySection.classList.add("active");
-      termsSection.classList.remove("active");
-    }
-
-    function showTerms() {
-      termsTab.classList.add("active");
-      privacyTab.classList.remove("active");
-      termsSection.classList.add("active");
-      privacySection.classList.remove("active");
-    }
-
-    if (window.innerWidth > 768) {
-      contactDropdown.addEventListener("mouseenter", openContact);
-      contactDropdown.addEventListener("mouseleave", scheduleContactClose);
-
-      legalDropdown.addEventListener("mouseenter", openLegal);
-      legalDropdown.addEventListener("mouseleave", scheduleLegalClose);
-
-      legalOverlay.addEventListener("mouseenter", cancelLegalClose);
-      legalOverlay.addEventListener("mouseleave", scheduleLegalClose);
-    }
-
-    contactBtn.addEventListener("click", (e) => {
-      e.stopPropagation();
-      if (contactPanel.classList.contains("open")) {
-        closeContactImmediate();
-      } else {
-        openContact();
-      }
-    });
-
-    legalBtn.addEventListener("click", (e) => {
-      e.stopPropagation();
-      if (legalOverlay.classList.contains("open")) {
-        closeLegalImmediate();
-      } else {
-        openLegal();
-      }
-    });
-
-    privacyTab.addEventListener("click", showPrivacy);
-    termsTab.addEventListener("click", showTerms);
-
-    closeLegalBtn.addEventListener("click", closeLegalImmediate);
-
-    legalOverlay.addEventListener("click", (e) => {
-      if (!legalModal.contains(e.target)) {
-        closeLegalImmediate();
-      }
-    });
-
-    document.addEventListener("click", (e) => {
-      if (!e.target.closest(".dropdown") && !legalModal.contains(e.target)) {
-        closeAllImmediate();
-      }
-    });
-
-    document.addEventListener("keydown", (e) => {
-      if (e.key === "Escape") {
-        closeAllImmediate();
-      }
-    });
+    legalBtn.onclick = () => {
+      legalOverlay.classList.toggle("open");
+    };
   </script>
 
 </body>
