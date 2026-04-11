@@ -794,7 +794,8 @@
       contactDropdown.addEventListener("mouseleave", scheduleContactClose);
 
       legalDropdown.addEventListener("mouseenter", openLegal);
-      legalDropdown.addEventListener("mouseleave", scheduleLegalClose);
+      legalOverlay.addEventListener("mouseenter", cancelLegalClose);
+      legalOverlay.addEventListener("mouseleave", scheduleLegalClose);
     }
 
     contactBtn.addEventListener("click", (e) => {
