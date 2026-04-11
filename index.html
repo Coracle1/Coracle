@@ -30,6 +30,7 @@
       width: 100%;
       position: relative;
       background: black;
+      overflow: hidden;
     }
 
     .hero-bg-desktop,
@@ -308,17 +309,24 @@
       }
 
       header {
-        position: relative;
+        position: absolute;
         top: auto;
-        left: auto;
+        bottom: 18px;
+        left: 0;
         width: 100%;
-        padding: 14px 16px 10px;
+        padding: 0 16px;
         justify-content: center;
-        background: rgba(0, 0, 0, 0.85);
+        z-index: 30;
       }
 
       header::before {
-        display: none;
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.5);
+        backdrop-filter: blur(8px);
+        border-radius: 999px;
+        z-index: -1;
       }
 
       nav ul {
@@ -326,6 +334,7 @@
         flex-wrap: wrap;
         justify-content: center;
         align-items: center;
+        padding: 8px 14px;
       }
 
       .nav-button {
@@ -384,17 +393,24 @@
       }
 
       header {
-        position: relative;
-        top: -50px;
-        left: auto;
+        position: absolute;
+        top: auto;
+        bottom: 24px;
+        left: 0;
         width: 100%;
-        padding: 16px 20px 12px;
+        padding: 0 20px;
         justify-content: center;
-        background: rgba(0, 0, 0, 0.85);
+        z-index: 30;
       }
 
       header::before {
-        display: none;
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.5);
+        backdrop-filter: blur(8px);
+        border-radius: 999px;
+        z-index: -1;
       }
 
       nav ul {
@@ -402,6 +418,7 @@
         flex-wrap: wrap;
         justify-content: center;
         align-items: center;
+        padding: 10px 18px;
       }
 
       .nav-button {
@@ -435,28 +452,28 @@
   <div class="hero-image-wrap">
     <img src="newappweb4.png" class="hero-bg-desktop" alt="Coracle new app coming soon">
     <img src="mobileweb.png" class="hero-bg-mobile" alt="Coracle new app coming soon">
+
+    <header>
+      <nav>
+        <ul>
+          <li class="dropdown" id="contactDropdown">
+            <button class="nav-button" id="contactBtn" type="button">Contact</button>
+            <div class="contact-panel" id="contactPanel">
+              <h3>Contact Coracle</h3>
+              <p>For enquiries or feedback, please get in touch by email.</p>
+              <a href="mailto:coracle1@btinternet.com?subject=Enquiry%20from%20Coracle%20website">
+                coracle1@btinternet.com
+              </a>
+            </div>
+          </li>
+
+          <li class="dropdown" id="legalDropdown">
+            <button class="nav-button" id="legalBtn" type="button">Legal</button>
+          </li>
+        </ul>
+      </nav>
+    </header>
   </div>
-
-  <header>
-    <nav>
-      <ul>
-        <li class="dropdown" id="contactDropdown">
-          <button class="nav-button" id="contactBtn" type="button">Contact</button>
-          <div class="contact-panel" id="contactPanel">
-            <h3>Contact Coracle</h3>
-            <p>For enquiries or feedback, please get in touch by email.</p>
-            <a href="mailto:coracle1@btinternet.com?subject=Enquiry%20from%20Coracle%20website">
-              coracle1@btinternet.com
-            </a>
-          </div>
-        </li>
-
-        <li class="dropdown" id="legalDropdown">
-          <button class="nav-button" id="legalBtn" type="button">Legal</button>
-        </li>
-      </ul>
-    </nav>
-  </header>
 
   <div class="legal-overlay" id="legalOverlay">
     <div class="legal-modal" id="legalModal" role="dialog" aria-modal="true" aria-labelledby="legalTitle">
