@@ -29,14 +29,18 @@
     .hero-image-wrap {
       width: 100%;
       position: relative;
-      overflow: hidden;
       background: black;
     }
 
-    .hero-bg {
+    .hero-bg-desktop,
+    .hero-bg-mobile {
       width: 100%;
-      height: auto;
       display: block;
+      height: auto;
+    }
+
+    .hero-bg-mobile {
+      display: none;
     }
 
     header {
@@ -293,42 +297,35 @@
       color: #cfcfcf;
     }
 
+    /* Mobile phones */
     @media (max-width: 768px) {
-      .hero-bg {
-        width: 100%;
-        height: 78vh;
-        object-fit: cover;
-        object-position: center top;
+      .hero-bg-desktop {
+        display: none;
+      }
+
+      .hero-bg-mobile {
+        display: block;
       }
 
       header {
+        position: relative;
         top: auto;
-        bottom: 20px;
-        left: 50%;
-        transform: translateX(-50%);
-        width: auto;
-        padding: 0;
+        left: auto;
+        width: 100%;
+        padding: 14px 16px 10px;
         justify-content: center;
-        z-index: 40;
+        background: rgba(0, 0, 0, 0.85);
       }
 
       header::before {
-        content: "";
-        position: absolute;
-        inset: 0;
-        height: auto;
-        background: rgba(0, 0, 0, 0.5);
-        backdrop-filter: blur(8px);
-        border-radius: 999px;
-        z-index: -1;
+        display: none;
       }
 
       nav ul {
-        gap: 8px;
-        flex-wrap: nowrap;
+        gap: 10px;
+        flex-wrap: wrap;
         justify-content: center;
         align-items: center;
-        padding: 8px 14px;
       }
 
       .nav-button {
@@ -338,8 +335,7 @@
       }
 
       .contact-panel {
-        top: auto;
-        bottom: 52px;
+        top: calc(100% + 8px);
         right: 50%;
         transform: translateX(50%);
         width: min(260px, 90vw);
@@ -375,35 +371,90 @@
         font-size: 16px;
       }
     }
+
+    /* Tablet portrait */
+    @media (min-width: 769px) and (max-width: 1024px) and (orientation: portrait) {
+      .hero-bg-desktop {
+        display: none;
+      }
+
+      .hero-bg-mobile {
+        display: block;
+      }
+
+      header {
+        position: relative;
+        top: auto;
+        left: auto;
+        width: 100%;
+        padding: 16px 20px 12px;
+        justify-content: center;
+        background: rgba(0, 0, 0, 0.85);
+      }
+
+      header::before {
+        display: none;
+      }
+
+      nav ul {
+        gap: 14px;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .nav-button {
+        font-size: 14px;
+        padding: 8px 12px;
+        white-space: nowrap;
+      }
+
+      .contact-panel {
+        top: calc(100% + 8px);
+        right: 50%;
+        transform: translateX(50%);
+        width: 300px;
+      }
+
+      .legal-overlay {
+        padding: 16px;
+      }
+
+      .legal-modal {
+        width: 100%;
+        max-height: 92vh;
+      }
+    }
   </style>
 </head>
 
 <body>
 
   <div class="hero-image-wrap">
-    <img src="newappweb4.png" class="hero-bg" alt="Coracle new app coming soon">
-
-    <header>
-      <nav>
-        <ul>
-          <li class="dropdown" id="contactDropdown">
-            <button class="nav-button" id="contactBtn" type="button">Contact</button>
-            <div class="contact-panel" id="contactPanel">
-              <h3>Contact Coracle</h3>
-              <p>For enquiries or feedback, please get in touch by email.</p>
-              <a href="mailto:coracle1@btinternet.com?subject=Enquiry%20from%20Coracle%20website">
-                coracle1@btinternet.com
-              </a>
-            </div>
-          </li>
-
-          <li class="dropdown" id="legalDropdown">
-            <button class="nav-button" id="legalBtn" type="button">Legal</button>
-          </li>
-        </ul>
-      </nav>
-    </header>
+    <img src="newappweb4.png" class="hero-bg-desktop" alt="Coracle new app coming soon">
+    <img src="mobileweb.png" class="hero-bg-mobile" alt="Coracle new app coming soon">
   </div>
+
+  <header>
+    <nav>
+      <ul>
+        <li class="dropdown" id="contactDropdown">
+          <button class="nav-button" id="contactBtn" type="button">Contact</button>
+          <div class="contact-panel" id="contactPanel">
+            <h3>Contact Coracle</h3>
+            <p>For enquiries or feedback, please get in touch by email.</p>
+            <a href="mailto:coracle1@btinternet.com?subject=Enquiry%20from%20Coracle%20website">
+              coracle1@btinternet.com
+            </a>
+          </div>
+        </li>
+
+        <li class="dropdown" id="legalDropdown">
+          <button class="nav-button" id="legalBtn" type="button">Legal</button>
+        </li>
+      </ul>
+    </nav>
+  </header>
 
   <div class="legal-overlay" id="legalOverlay">
     <div class="legal-modal" id="legalModal" role="dialog" aria-modal="true" aria-labelledby="legalTitle">
@@ -715,15 +766,12 @@
       privacySection.classList.remove("active");
     }
 
-    if (window.innerWidth > 768) {
+    if (window.innerWidth > 1024) {
       contactDropdown.addEventListener("mouseenter", openContact);
       contactDropdown.addEventListener("mouseleave", scheduleContactClose);
 
       legalDropdown.addEventListener("mouseenter", openLegal);
       legalDropdown.addEventListener("mouseleave", scheduleLegalClose);
-
-      legalOverlay.addEventListener("mouseenter", cancelLegalClose);
-      legalOverlay.addEventListener("mouseleave", scheduleLegalClose);
     }
 
     contactBtn.addEventListener("click", (e) => {
